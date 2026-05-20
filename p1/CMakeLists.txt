@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.15)
+project(hello_window VERSION 1.0.0 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(OpenGL_GL_PREFERENCE GLVND)
+find_package(OpenGL REQUIRED)
+
+add_library(glad STATIC third_party/glad/src/gl.c)
+target_include_directories(glad PUBLIC third_party/glad/include)
+
+add_executable(hello_window src/main.cpp)
+target_include_directories(hello_window PRIVATE src)
+target_link_libraries(hello_window PRIVATE glfw OpenGL::GL glad)
