@@ -13,3 +13,9 @@ target_include_directories(glad PUBLIC third_party/glad/include)
 add_executable(hello_window src/main.cpp)
 target_include_directories(hello_window PRIVATE src)
 target_link_libraries(hello_window PRIVATE glfw OpenGL::GL glad)
+
+add_custom_target(run
+    COMMAND hello_window
+    DEPENDS hello_window
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
