@@ -7,8 +7,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
-add_library(glad STATIC third_party/glad/src/gl.c)
-target_include_directories(glad PUBLIC third_party/glad/include)
+add_library(glad STATIC ../glad/src/gl.c)
+target_include_directories(glad PUBLIC ../glad/include)
 
 add_executable(hello_window src/main.cpp)
 target_include_directories(hello_window PRIVATE src)
